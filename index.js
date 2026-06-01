@@ -18,8 +18,12 @@ app.use(
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log("Mongo Error:",err));
+  .then(() => {
+    console.log("✅ MongoDB connected");
+  })
+  .catch((err) => {
+    console.error("❌ MongoDB connection failed:", err);
+  });
 
 app.use("/api/auth", authRoutes);
 app.use("/api/orders", orderRoutes);
