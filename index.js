@@ -25,6 +25,10 @@ mongoose.connect(process.env.MONGO_URI)
     console.error("❌ MongoDB connection failed:", err);
   });
 
+  setInterval(() => {
+  console.log("Mongo State:", mongoose.connection.readyState);
+}, 10000);
+
 app.use("/api/auth", authRoutes);
 app.use("/api/orders", orderRoutes);
 
