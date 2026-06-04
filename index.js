@@ -1,5 +1,4 @@
 require("dotenv").config();
-console.log(JSON.stringify(process.env.MONGO_URI));
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -25,9 +24,9 @@ mongoose.connect(process.env.MONGO_URI)
     console.error("❌ MongoDB connection failed:", err);
   });
 
-  setInterval(() => {
-  console.log("Mongo State:", mongoose.connection.readyState);
-}, 10000);
+//   setInterval(() => {
+//   console.log("Mongo State:", mongoose.connection.readyState);
+// }, 10000);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/orders", orderRoutes);
